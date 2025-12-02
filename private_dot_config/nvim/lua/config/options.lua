@@ -6,6 +6,9 @@ local opt = vim.opt
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 vim.cmd([[
   set formatoptions-=cro
   let g:ftplugin_sql_omni_key_right = '<C-N>'

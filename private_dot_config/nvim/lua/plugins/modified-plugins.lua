@@ -89,6 +89,8 @@ return {
           if
             string.match(filepath, "oracle/workspace/authz/")
             or string.match(filepath, "oracle/workspace/authz%-trunk/")
+            or string.match(filepath, "oracle/workspace/speedle%-plus/")
+            or string.match(filepath, "oracle/workspace/speedle%-plus%-trunk/")
           then
             return { "goimports", "gofmt" }
           else

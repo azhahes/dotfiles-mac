@@ -59,5 +59,6 @@ extract_zip() {
   mkdir -p "$folder" && unzip "$zipfile" -d "$folder"
 }
 alias uzip=extract_zip
+source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # zprof

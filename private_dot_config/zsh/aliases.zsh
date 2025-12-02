@@ -3,7 +3,6 @@ alias rm='rm -rIv'   # Recursive, interactive, and verbose `rm`
 alias cp='cp -rv'   # Recursive and verbose `cp`
 alias mv='mv -v'    # Verbose `mv`
 alias mkdir='mkdir -vp'  # Recursive, verbose `mkdir`
-alias grep='rg'     # Use `ripgrep` instead of `grep`
 
 # `exa` aliases for more informative and colored output
 alias la='eza --icons -a --group-directories-first -s modified'  # List all files and directories, including hidden ones
