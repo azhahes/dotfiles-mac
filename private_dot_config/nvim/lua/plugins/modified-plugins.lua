@@ -1,15 +1,5 @@
 return {
   {
-    "folke/tokyonight.nvim",
-    opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
-  },
-  {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       window = {
@@ -151,11 +141,11 @@ return {
     end,
   },
   {
-    "nvim-telescope/telescope.nvim",
-    opts = {
-      defaults = {
-        layout_strategy = "flex",
-      },
+    "snacks.nvim",
+    opts = {},
+    -- stylua: ignore
+    keys = {
+        { "<leader>fp",  function() Snacks.picker.projects({dev= "~/oracle/workspace/"}) end, desc = "find projects" },
     },
   },
 }

@@ -18,6 +18,7 @@ alias rs='curl --data-binary @- https://paste.rs | wl-copy'  # Share output to a
 
 alias c=clear
 alias v=nvim
+alias nv='neovide --frame transparent'
 alias d="v -d"
 alias lf=lfcd
 alias iopacity="~/.config/alacritty/change-opacity.sh +"

@@ -93,3 +93,9 @@ r_authz_service () {
 	done
 }
 
+chpwd() {
+  if [[ -d .venv ]]; then
+    source .venv/bin/activate
+  fi
+}
+autoload -Uz add-zsh-hook

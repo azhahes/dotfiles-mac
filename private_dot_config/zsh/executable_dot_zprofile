@@ -94,3 +94,4 @@ export SQLCMDMAXVARTYPEWIDTH=36
 export SQLCMDMAXFIXEDTYPEWIDTH=36
 export GF_PATHS_HOME="/opt/homebrew/share/grafana"
 export PATH=$PATH:/Users/azhahes/.local/share/../bin
+export PATH="$HOME/develop/flutter/bin:$PATH"
