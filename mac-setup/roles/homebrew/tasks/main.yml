@@ -1,0 +1,62 @@
+- name: Ensure Homebrew is installed
+  stat:
+    path: /opt/homebrew/bin/brew
+  register: brew_check
+
+- name: Fail if Homebrew is not installed
+  fail:
+    msg: "Homebrew is not installed. Install it manually first."
+  when: not brew_check.stat.exists
+
+- name: Update Homebrew
+  homebrew:
+    update_homebrew: yes
+
+# ---------------------------
+# Homebrew Formulae (CLI)
+# ---------------------------
+- name: Install CLI tools
+  homebrew:
+    name:
+      - neovim
+      - bat
+      - tmux
+      - zoxide
+      - tldr
+      - git
+      - ripgrep
+      - chezmoi
+      - node
+      - kubectl
+      - fzf
+      - jq
+      - yq
+      - eza
+      - lazygit
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+      - fx
+      - go
+      - starship
+    state: present
+  tags:
+    - dev-cli
+
+# ---------------------------
+# Homebrew Casks (GUI Apps)
+# ---------------------------
+- name: Install GUI applications (non-privileged)
+  homebrew_cask:
+    name:
+      - keepassxc
+      - ghostty
+      - neovide
+      - postman
+      - itsycal
+      - hiddenbar
+      - arc
+      - raycast
+      - hammerspoon
+    state: present
+  tags:
+    - apps

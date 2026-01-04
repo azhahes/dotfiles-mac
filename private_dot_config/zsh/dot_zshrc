@@ -1,8 +1,4 @@
 # zmodload zsh/zprof
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -18,12 +14,10 @@ if [ -z "$TMUX" ] && [ "$UID" != 0 ] && [ "$TERMINAL_EMULATOR" != "JetBrains-Jed
     fi
 fi
 
-source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
-
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/azhahes/.oh-my-zsh"
 
-plugins=(vi-mode zsh-autosuggestions zsh-syntax-highlighting fzf zsh-interactive-cd)
+plugins=(vi-mode fzf zsh-interactive-cd)
 
 source "$ZSH/oh-my-zsh.sh"
 
@@ -37,28 +31,9 @@ eval "$(zoxide init zsh)"
  # Refrence:
 # # https://gitlab.com/fazzi/dotfiles.git
 
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
 export GOPRIVATE=orahub.oci.oraclecorp.com
 
-extract_zip() {
-  if [[ -z "$1" ]]; then
-    echo "Usage: extract_zip <zipfile>"
-    return 1
-  fi
-
-  local zipfile="$1"
-  if [[ ! -f "$zipfile" ]]; then
-    echo "Error: File '$zipfile' does not exist."
-    return 1
-  fi
-
-  local folder="${zipfile%.zip}"
-  mkdir -p "$folder" && unzip "$zipfile" -d "$folder"
-}
-alias uzip=extract_zip
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# zprof
+# Zsh plugins via Homebrew
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+eval "$(starship init zsh)"

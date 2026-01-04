@@ -1,0 +1,35 @@
+- name: Check if chezmoi is already initialized
+  stat:
+    path: "{{ ansible_facts.env.HOME }}/.local/share/chezmoi"
+  register: chezmoi_dir
+
+# -------------------------
+# One-time init
+# -------------------------
+- name: Initialize chezmoi (first run only)
+  command: >
+    chezmoi init https://github.com/azhahes/dotfiles-mac.git
+  when: not chezmoi_dir.stat.exists
+  tags:
+    - dotfiles
+
+# -------------------------
+# Safe apply (every run)
+# -------------------------
+- name: Apply chezmoi dotfiles
+  command: chezmoi apply
+  tags:
+    - dotfiles
+
+# -------------------------
+# Tmux Plugin Manager (TPM)
+# -------------------------
+- name: Install tmux plugin manager (TPM)
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ ansible_facts.env.HOME }}/.tmux/plugins/tpm"
+    version: master
+    update: yes
+  tags:
+    - tmux
+

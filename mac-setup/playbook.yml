@@ -1,0 +1,7 @@
+- name: Setup my Mac
+  hosts: localhost
+  gather_facts: yes
+
+  roles:
+    - homebrew
+    - chezmoi
